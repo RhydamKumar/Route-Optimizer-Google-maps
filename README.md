@@ -221,6 +221,17 @@ cd Route-Optimizer-Google-maps
 pip install flask
 ```
 
+## Configure Google Maps API
+
+1. Create a project in **Google Cloud Console**.
+2. Enable the **Maps JavaScript API**.
+3. Generate an API key.
+4. Open the `index.html` file and replace `YOUR_API_KEY` with your generated Google Maps API key.
+
+```html
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+```
+
 ## Configure Google Maps
 
 Generate a Google Maps JavaScript API key from the Google Cloud Console.
