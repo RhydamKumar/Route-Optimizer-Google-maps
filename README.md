@@ -232,12 +232,6 @@ pip install flask
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
 ```
 
-## Configure Google Maps
-
-Generate a Google Maps JavaScript API key from the Google Cloud Console.
-
-Replace the placeholder API key inside the project with your own API key.
-
 ## Run the Application
 
 ```bash
