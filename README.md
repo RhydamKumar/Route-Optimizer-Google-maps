@@ -1,12 +1,12 @@
 # 🗺️ Route Optimizer using Google Maps API
 
-A web-based route optimization application that computes the shortest path using **Dijkstra's Algorithm** and **A* Search Algorithm**, while leveraging **Google Maps JavaScript API** only for map visualization.
+A lightweight route optimization application that computes the shortest path using **Dijkstra's Algorithm** and **A* Search Algorithm** while using **Google Maps JavaScript API** only as the map visualization layer.
 
-Instead of relying on Google's paid routing services, this project performs all shortest-path calculations locally using Python, making it an affordable solution for students, researchers, and developers who want to experiment with pathfinding algorithms.
+Unlike traditional navigation applications that rely on paid routing APIs, this project performs all shortest-path computations locally using custom graph algorithms written in Python. It is designed primarily for students, researchers, and developers who want to experiment with routing algorithms without incurring API usage costs.
 
 ---
 
-# 📌 Table of Contents
+# 📑 Table of Contents
 
 * Overview
 * Why This Project?
@@ -18,7 +18,8 @@ Instead of relying on Google's paid routing services, this project performs all 
 * Technologies Used
 * Installation
 * Usage
-* Algorithms Implemented
+* Algorithms
+* Educational Objectives
 * Future Improvements
 * Contributing
 * License
@@ -27,70 +28,73 @@ Instead of relying on Google's paid routing services, this project performs all 
 
 # 📖 Overview
 
-Modern navigation applications like Google Maps provide excellent routing services. However, their routing APIs are paid services, making them less practical for students, researchers, and hobby developers who simply want to experiment with shortest-path algorithms.
+Route optimization is one of the most fundamental problems in computer science and modern navigation systems. Applications such as Google Maps solve this problem extremely well, but integrating their routing services into your own application generally requires using paid APIs.
 
-This project demonstrates that route optimization can be performed independently using classical graph algorithms while still benefiting from Google's high-quality map interface.
+This project demonstrates an alternative educational approach by separating **map visualization** from **route computation**.
 
-Google Maps is used **only as the visualization layer**. All shortest-path calculations are executed locally using custom implementations of Dijkstra's Algorithm and A* Search Algorithm written in Python.
+Instead of requesting routes from Google's servers, this application:
 
-The project combines:
+* Displays the map using Google Maps JavaScript API.
+* Builds its own graph representation.
+* Computes shortest paths locally using Python.
+* Displays the computed route on the map.
 
-* Python
-* Flask
-* HTML
-* JavaScript
-* Google Maps JavaScript API
+The project combines concepts from:
+
 * Graph Theory
-* Pathfinding Algorithms
+* Shortest Path Algorithms
+* Web Development
+* Flask
+* Google Maps Integration
 
-to build a lightweight educational routing system.
-
----
-
-# ❓ Why Use This Project When Google Maps Already Exists?
-
-This is probably the most common question.
-
-The answer is simple.
-
-Google Maps itself is free to use as an application, but if you want to build your own software that uses Google's routing services, you typically need to use paid APIs such as the Directions API or Routes API. For projects with many requests, the cost can increase quickly.
-
-This project is intended for:
-
-* 🎓 Students building academic projects
-* 🔬 Researchers testing new routing algorithms
-* 💻 Developers creating prototype applications
-* 📚 Anyone learning graph algorithms
-
-Instead of paying for routing API requests, this project performs the route computation locally using Python.
-
-You only need a Google Maps JavaScript API key to display the map interface. The shortest-path computation is completely handled by your own implementation.
-
-This makes the project an excellent learning resource and a low-cost alternative for experimentation.
+making it an excellent learning resource for students and developers.
 
 ---
 
-# ⚙️ How Does This Project Avoid Paid Routing APIs?
+# ❓ Why This Project?
 
-Google charges for using routing-related APIs because their servers perform the path computation.
+A common question is:
 
-This project follows a different approach:
+> **"Why use this project when Google Maps already exists?"**
 
-1. Use the Google Maps JavaScript API only to display the map.
-2. Build your own graph representation.
-3. Implement shortest-path algorithms locally.
-4. Compute routes using Python instead of Google's routing services.
-5. Display the computed route back on the map.
+The answer is that Google Maps itself is a free application for users, but developers who want to build applications using Google's routing services generally need to use APIs such as the Directions API or Routes API, which are paid based on usage.
 
-In simple words,
+For many people, especially:
 
-**Google provides the map.**
+* 🎓 Students
+* 🔬 Researchers
+* 💻 Developers building prototypes
+* 📚 People learning graph algorithms
 
-**Your own algorithm provides the route.**
+these costs are unnecessary because they simply want to experiment with routing algorithms or build academic projects.
 
-Because the routing logic runs locally, no paid routing service is required.
+This project provides a free educational alternative by implementing the routing logic independently.
 
-To use the project, simply generate your own Google Maps JavaScript API key from Google Cloud Console and replace the placeholder API key inside the project.
+Instead of paying for route calculations, users only need a Google Maps JavaScript API key to display the map interface, while the shortest path itself is computed entirely by the project's own algorithms.
+
+---
+
+# ⚙️ How Does It Work?
+
+Google provides several APIs for route optimization, but those services perform the path computation on Google's servers and are billed according to API usage.
+
+This project follows a different approach.
+
+1. Display the map using the Google Maps JavaScript API.
+2. Create a graph representing roads and intersections.
+3. Execute Dijkstra's Algorithm or A* Search locally in Python.
+4. Compute the shortest path without calling Google's routing APIs.
+5. Visualize the resulting path on Google Maps.
+
+In simple terms:
+
+**Google provides the map interface.**
+
+**This project provides the route calculation.**
+
+Because the routing logic runs entirely on your own system, no paid routing API is required.
+
+To run the project, generate your own Google Maps JavaScript API key from Google Cloud Console and replace the placeholder API key in the project.
 
 ---
 
@@ -98,46 +102,52 @@ To use the project, simply generate your own Google Maps JavaScript API key from
 
 * 🌍 Interactive Google Maps interface
 * 📍 Source and destination selection
+* 🛣️ Shortest path computation
 * ⚡ Dijkstra's Algorithm implementation
 * 🚀 A* Search Algorithm implementation
-* 🧠 Graph-based shortest path computation
+* 🧠 Graph-based routing
 * 🔄 Flask backend
 * 📊 Interactive frontend
 * 🎓 Educational implementation of graph algorithms
-* 💡 Low-cost alternative for routing algorithm experimentation
+* 💰 No dependency on paid routing APIs
+* 🧩 Easy to extend for additional locations
 
 ---
 
 # ⚠️ Current Limitation
 
-Currently, the project map contains graph data only for **Ludhiana, Punjab**.
+At present, the project contains graph data only for **Ludhiana, Punjab**.
 
-This limitation exists because generating and processing graph data for a very large geographical area requires significantly more memory and computational resources. The project was developed and tested on a low-end machine, so the graph was intentionally limited to ensure smooth local execution.
+This limitation is intentional.
 
-If someone has access to a more powerful computer, the project can be extended easily by:
+Generating graph data for larger geographical regions requires considerably more memory and computational resources. Since the project was developed and tested on a low-end computer, limiting the graph to a single city ensures smooth local execution and faster algorithm performance.
+
+This limitation is **not** imposed by the algorithms themselves.
+
+Anyone with a more capable system can easily expand the project by:
 
 * Adding graph data for additional cities
-* Increasing the map coverage
-* Expanding the graph database
+* Increasing the geographical coverage
 * Modifying the graph generation code
+* Creating larger graph datasets
 
-The algorithms themselves are not limited to Ludhiana; only the current graph dataset is.
+The routing algorithms will continue to work without modification once the graph is expanded.
 
 ---
 
 # 🏗️ Project Architecture
 
-```
+```text
                 User
                   │
                   ▼
            index.html
                   │
                   ▼
-      Google Maps JavaScript API
+Google Maps JavaScript API
                   │
                   ▼
-            Flask Backend
+          Flask Backend
              (app.py)
                   │
         ┌─────────┴─────────┐
@@ -158,33 +168,33 @@ Displayed on Google Maps
 
 # 📁 Project Structure
 
-```
+```text
 Route-Optimizer-Google-maps/
-
-│── app.py
-│── algorithms.py
-│── graph.py
-│── index.html
-│── README.md
+│
+├── app.py                 # Flask backend
+├── algorithms.py          # Dijkstra & A* implementations
+├── graph.py               # Graph representation
+├── index.html             # Frontend interface
+└── README.md
 ```
 
 ---
 
 # 💻 Technologies Used
 
-### Frontend
+## Frontend
 
 * HTML5
 * CSS3
 * JavaScript
 * Google Maps JavaScript API
 
-### Backend
+## Backend
 
 * Python
 * Flask
 
-### Algorithms
+## Algorithms
 
 * Dijkstra's Algorithm
 * A* Search Algorithm
@@ -193,43 +203,47 @@ Route-Optimizer-Google-maps/
 
 # ⚙️ Installation
 
-Clone the repository.
+## Clone the Repository
 
 ```bash
 git clone https://github.com/RhydamKumar/Route-Optimizer-Google-maps.git
 ```
 
-Navigate into the project.
+## Navigate to the Project
 
 ```bash
 cd Route-Optimizer-Google-maps
 ```
 
-Install Flask.
+## Install Dependencies
 
 ```bash
 pip install flask
 ```
 
-Start the application.
+## Configure Google Maps
+
+Generate a Google Maps JavaScript API key from the Google Cloud Console.
+
+Replace the placeholder API key inside the project with your own API key.
+
+## Run the Application
 
 ```bash
 python app.py
 ```
 
-Generate your own Google Maps JavaScript API key from Google Cloud Console and replace the placeholder API key inside the project.
-
-Open the application in your browser.
+Open the URL displayed by Flask in your browser.
 
 ---
 
 # 🚀 Usage
 
-1. Start the Flask server.
-2. Open the application.
-3. Enter the source location.
-4. Enter the destination.
-5. Run the selected algorithm.
+1. Launch the Flask server.
+2. Open the application in your browser.
+3. Select the source location.
+4. Select the destination.
+5. Execute the routing algorithm.
 6. View the optimized route displayed on Google Maps.
 
 ---
@@ -238,61 +252,71 @@ Open the application in your browser.
 
 ## Dijkstra's Algorithm
 
+Dijkstra's Algorithm guarantees the shortest path in weighted graphs with non-negative edge weights.
+
+### Characteristics
+
 * Complete
 * Optimal
-* Suitable for weighted graphs
-* Guarantees the shortest path
+* Reliable
+* Widely used in routing applications
 
 ---
 
 ## A* Search Algorithm
 
-* Heuristic-based search
-* Faster for many practical cases
-* Widely used in navigation systems
-* Optimal when an admissible heuristic is used
+A* Search improves performance by using heuristics to prioritize promising paths.
+
+### Characteristics
+
+* Faster search in many practical scenarios
+* Heuristic-based optimization
+* Optimal when using an admissible heuristic
+* Commonly used in modern navigation systems
 
 ---
 
-# 🎯 Educational Objectives
+# 🎓 Educational Objectives
 
 This project demonstrates practical implementation of:
 
 * Graph Theory
-* Shortest Path Algorithms
-* Flask Backend Development
+* Pathfinding Algorithms
+* Flask Web Development
 * Google Maps Integration
 * Frontend-Backend Communication
-* Algorithm Visualization
+* Route Visualization
+* Algorithm Design
 
 ---
 
 # 🚀 Future Improvements
 
-* Add support for multiple cities
+* Support multiple cities
 * Automatic graph generation
-* Compare execution time of algorithms
+* Execution time comparison
 * Alternative route suggestions
 * Traffic-aware routing
 * Better UI/UX
 * Cloud deployment
 * Larger graph datasets
+* Route caching for improved performance
 
 ---
 
 # 🤝 Contributing
 
-Contributions are welcome.
+Contributions are always welcome.
 
-Feel free to fork the repository, improve the project, and submit a Pull Request.
+Feel free to fork the repository, improve the implementation, and submit a Pull Request.
 
 ---
 
 # 📜 License
 
-This project is intended for educational and research purposes.
+This project is intended for educational, research, and learning purposes.
 
-You are free to use, modify, and improve it while providing appropriate credit to the original repository.
+You are welcome to use, modify, and extend the project while providing appropriate credit to the original repository.
 
 ---
 
@@ -300,9 +324,8 @@ You are free to use, modify, and improve it while providing appropriate credit t
 
 **Rhydam Kumar**
 
-GitHub:
-https://github.com/RhydamKumar
+GitHub: https://github.com/RhydamKumar
 
 ---
 
-⭐ If you found this project useful, please consider giving it a star.
+⭐ If you found this project useful or learned something from it, consider giving it a **Star** on GitHub!
