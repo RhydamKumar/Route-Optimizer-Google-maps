@@ -1,47 +1,127 @@
 # 🗺️ Route Optimizer using Google Maps API
 
-A web-based route optimization application that visualizes and computes the shortest path between locations using **Google Maps** while implementing **Dijkstra's Algorithm** and **A\* Search Algorithm** in Python. The project combines an interactive frontend with a Flask backend to demonstrate graph-based pathfinding algorithms and real-time route visualization.
+A web-based route optimization application that computes the shortest path using **Dijkstra's Algorithm** and **A* Search Algorithm**, while leveraging **Google Maps JavaScript API** only for map visualization.
+
+Instead of relying on Google's paid routing services, this project performs all shortest-path calculations locally using Python, making it an affordable solution for students, researchers, and developers who want to experiment with pathfinding algorithms.
 
 ---
 
-## 📌 Table of Contents
+# 📌 Table of Contents
 
-- [Overview](#-overview)
-- [Features](#-features)
-- [Project Architecture](#-project-architecture)
-- [Project Structure](#-project-structure)
-- [Technologies Used](#-technologies-used)
-- [Installation](#-installation)
-- [Usage](#-usage)
-- [Algorithms Implemented](#-algorithms-implemented)
-- [How It Works](#-how-it-works)
-- [Future Enhancements](#-future-enhancements)
-- [Contributing](#-contributing)
-- [License](#-license)
+* Overview
+* Why This Project?
+* How This Project Works
+* Features
+* Current Limitation
+* Project Architecture
+* Project Structure
+* Technologies Used
+* Installation
+* Usage
+* Algorithms Implemented
+* Future Improvements
+* Contributing
+* License
 
 ---
 
 # 📖 Overview
 
-Finding the shortest and most efficient route is one of the fundamental problems in computer science and navigation systems. This project demonstrates how classical graph algorithms can be integrated with modern web technologies to create an interactive route optimization application.
+Modern navigation applications like Google Maps provide excellent routing services. However, their routing APIs are paid services, making them less practical for students, researchers, and hobby developers who simply want to experiment with shortest-path algorithms.
 
-The application uses **Google Maps** as the visualization layer while performing shortest-path computations locally using Python implementations of **Dijkstra's Algorithm** and **A\* Search Algorithm**. The frontend provides an intuitive interface for users to interact with the map, while the backend processes graph data and returns optimized routes.
+This project demonstrates that route optimization can be performed independently using classical graph algorithms while still benefiting from Google's high-quality map interface.
 
-This project was developed as an educational demonstration of graph algorithms, backend development using Flask, and frontend integration with Google Maps.
+Google Maps is used **only as the visualization layer**. All shortest-path calculations are executed locally using custom implementations of Dijkstra's Algorithm and A* Search Algorithm written in Python.
+
+The project combines:
+
+* Python
+* Flask
+* HTML
+* JavaScript
+* Google Maps JavaScript API
+* Graph Theory
+* Pathfinding Algorithms
+
+to build a lightweight educational routing system.
+
+---
+
+# ❓ Why Use This Project When Google Maps Already Exists?
+
+This is probably the most common question.
+
+The answer is simple.
+
+Google Maps itself is free to use as an application, but if you want to build your own software that uses Google's routing services, you typically need to use paid APIs such as the Directions API or Routes API. For projects with many requests, the cost can increase quickly.
+
+This project is intended for:
+
+* 🎓 Students building academic projects
+* 🔬 Researchers testing new routing algorithms
+* 💻 Developers creating prototype applications
+* 📚 Anyone learning graph algorithms
+
+Instead of paying for routing API requests, this project performs the route computation locally using Python.
+
+You only need a Google Maps JavaScript API key to display the map interface. The shortest-path computation is completely handled by your own implementation.
+
+This makes the project an excellent learning resource and a low-cost alternative for experimentation.
+
+---
+
+# ⚙️ How Does This Project Avoid Paid Routing APIs?
+
+Google charges for using routing-related APIs because their servers perform the path computation.
+
+This project follows a different approach:
+
+1. Use the Google Maps JavaScript API only to display the map.
+2. Build your own graph representation.
+3. Implement shortest-path algorithms locally.
+4. Compute routes using Python instead of Google's routing services.
+5. Display the computed route back on the map.
+
+In simple words,
+
+**Google provides the map.**
+
+**Your own algorithm provides the route.**
+
+Because the routing logic runs locally, no paid routing service is required.
+
+To use the project, simply generate your own Google Maps JavaScript API key from Google Cloud Console and replace the placeholder API key inside the project.
 
 ---
 
 # ✨ Features
 
-- 🌍 Interactive Google Maps interface
-- 📍 Select source and destination locations
-- 🛣️ Shortest path calculation
-- ⚡ Dijkstra's Algorithm implementation
-- 🚀 A* Search Algorithm implementation
-- 🧠 Graph-based route optimization
-- 🔄 Flask backend for algorithm execution
-- 📊 Clean and responsive user interface
-- 🎯 Easy-to-understand architecture for learning graph algorithms
+* 🌍 Interactive Google Maps interface
+* 📍 Source and destination selection
+* ⚡ Dijkstra's Algorithm implementation
+* 🚀 A* Search Algorithm implementation
+* 🧠 Graph-based shortest path computation
+* 🔄 Flask backend
+* 📊 Interactive frontend
+* 🎓 Educational implementation of graph algorithms
+* 💡 Low-cost alternative for routing algorithm experimentation
+
+---
+
+# ⚠️ Current Limitation
+
+Currently, the project map contains graph data only for **Ludhiana, Punjab**.
+
+This limitation exists because generating and processing graph data for a very large geographical area requires significantly more memory and computational resources. The project was developed and tested on a low-end machine, so the graph was intentionally limited to ensure smooth local execution.
+
+If someone has access to a more powerful computer, the project can be extended easily by:
+
+* Adding graph data for additional cities
+* Increasing the map coverage
+* Expanding the graph database
+* Modifying the graph generation code
+
+The algorithms themselves are not limited to Ludhiana; only the current graph dataset is.
 
 ---
 
@@ -51,24 +131,24 @@ This project was developed as an educational demonstration of graph algorithms, 
                 User
                   │
                   ▼
-           index.html (Frontend)
+           index.html
                   │
                   ▼
       Google Maps JavaScript API
                   │
                   ▼
             Flask Backend
-               (app.py)
+             (app.py)
                   │
         ┌─────────┴─────────┐
         ▼                   ▼
  algorithms.py         graph.py
         │
         ▼
-Shortest Path Computation
+Shortest Path Algorithms
         │
         ▼
- Optimized Route Returned
+ Optimized Route
         │
         ▼
 Displayed on Google Maps
@@ -80,78 +160,77 @@ Displayed on Google Maps
 
 ```
 Route-Optimizer-Google-maps/
-│
-├── app.py                 # Flask backend
-├── algorithms.py          # Dijkstra & A* implementations
-├── graph.py               # Graph representation
-├── index.html             # Frontend interface
-└── README.md
+
+│── app.py
+│── algorithms.py
+│── graph.py
+│── index.html
+│── README.md
 ```
 
 ---
 
 # 💻 Technologies Used
 
-## Frontend
+### Frontend
 
-- HTML5
-- CSS3
-- JavaScript
-- Google Maps JavaScript API
+* HTML5
+* CSS3
+* JavaScript
+* Google Maps JavaScript API
 
-## Backend
+### Backend
 
-- Python
-- Flask
+* Python
+* Flask
 
-## Algorithms
+### Algorithms
 
-- Dijkstra's Algorithm
-- A* Search Algorithm
+* Dijkstra's Algorithm
+* A* Search Algorithm
 
 ---
 
 # ⚙️ Installation
 
-## 1. Clone the repository
+Clone the repository.
 
 ```bash
 git clone https://github.com/RhydamKumar/Route-Optimizer-Google-maps.git
 ```
 
-## 2. Navigate into the project directory
+Navigate into the project.
 
 ```bash
 cd Route-Optimizer-Google-maps
 ```
 
-## 3. Install dependencies
+Install Flask.
 
 ```bash
 pip install flask
 ```
 
-## 4. Start the Flask server
+Start the application.
 
 ```bash
 python app.py
 ```
 
-## 5. Open the application
+Generate your own Google Maps JavaScript API key from Google Cloud Console and replace the placeholder API key inside the project.
 
-Open your browser and navigate to the URL displayed by Flask (typically `http://127.0.0.1:5000`).
+Open the application in your browser.
 
 ---
 
 # 🚀 Usage
 
-1. Launch the Flask application.
-2. Open the web interface in your browser.
-3. Select the source location.
-4. Select the destination.
-5. Choose the routing algorithm (if applicable).
-6. Generate the optimized route.
-7. View the shortest path directly on Google Maps.
+1. Start the Flask server.
+2. Open the application.
+3. Enter the source location.
+4. Enter the destination.
+5. Run the selected algorithm.
+6. View the optimized route displayed on Google Maps.
 
 ---
 
@@ -159,111 +238,71 @@ Open your browser and navigate to the URL displayed by Flask (typically `http://
 
 ## Dijkstra's Algorithm
 
-Dijkstra's Algorithm guarantees the shortest path in weighted graphs with non-negative edge weights.
-
-### Characteristics
-
-- Complete
-- Optimal
-- Suitable for weighted graphs
-- Widely used in GPS navigation
+* Complete
+* Optimal
+* Suitable for weighted graphs
+* Guarantees the shortest path
 
 ---
 
 ## A* Search Algorithm
 
-A* improves search efficiency by using heuristics to prioritize nodes that are more likely to reach the destination faster.
-
-### Characteristics
-
-- Faster than Dijkstra in many practical scenarios
-- Heuristic-based search
-- Optimal when using an admissible heuristic
-- Commonly used in modern navigation systems
+* Heuristic-based search
+* Faster for many practical cases
+* Widely used in navigation systems
+* Optimal when an admissible heuristic is used
 
 ---
 
-# 🔄 How It Works
-
-1. The user interacts with the web interface.
-2. Source and destination locations are selected.
-3. The request is sent to the Flask backend.
-4. The backend constructs the graph.
-5. Dijkstra's or A* algorithm computes the shortest path.
-6. The optimized route is returned.
-7. Google Maps visualizes the final path for the user.
-
----
-
-# 🎯 Learning Objectives
+# 🎯 Educational Objectives
 
 This project demonstrates practical implementation of:
 
-- Graph data structures
-- Shortest path algorithms
-- Flask web development
-- Google Maps API integration
-- Frontend and backend communication
-- Algorithm visualization
+* Graph Theory
+* Shortest Path Algorithms
+* Flask Backend Development
+* Google Maps Integration
+* Frontend-Backend Communication
+* Algorithm Visualization
 
 ---
 
-# 🚀 Future Enhancements
+# 🚀 Future Improvements
 
-- Compare execution time between algorithms
-- Multiple routing options
-- Traffic-aware route optimization
-- Dynamic graph updates
-- Alternative path suggestions
-- Distance and travel time estimation
-- Better UI/UX improvements
-- Deployment on cloud platforms
+* Add support for multiple cities
+* Automatic graph generation
+* Compare execution time of algorithms
+* Alternative route suggestions
+* Traffic-aware routing
+* Better UI/UX
+* Cloud deployment
+* Larger graph datasets
 
 ---
 
 # 🤝 Contributing
 
-Contributions are welcome!
+Contributions are welcome.
 
-To contribute:
-
-1. Fork the repository
-2. Create a new feature branch
-
-```bash
-git checkout -b feature-name
-```
-
-3. Commit your changes
-
-```bash
-git commit -m "Add feature"
-```
-
-4. Push to GitHub
-
-```bash
-git push origin feature-name
-```
-
-5. Open a Pull Request
+Feel free to fork the repository, improve the project, and submit a Pull Request.
 
 ---
 
 # 📜 License
 
-This project is intended for educational and academic purposes.
+This project is intended for educational and research purposes.
 
-Feel free to fork, modify, and improve the project while providing appropriate credit to the original repository.
+You are free to use, modify, and improve it while providing appropriate credit to the original repository.
 
 ---
 
-## 👨‍💻 Author
+# 👨‍💻 Author
 
 **Rhydam Kumar**
 
-GitHub: https://github.com/RhydamKumar
+GitHub:
+https://github.com/RhydamKumar
 
 ---
 
-⭐ If you found this project useful, consider giving it a star on GitHub!
+⭐ If you found this project useful, please consider giving it a star.
